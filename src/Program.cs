@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Elsa.Events;
 using Elsa.Services;
 using Microsoft.Extensions.DependencyInjection;
 using WorkflowTest.Activities;
@@ -13,7 +14,7 @@ class Program
         var services = new ServiceCollection()
             .AddElsa(options => options
                 .AddConsoleActivities()
-                .AddActivitiesFrom<ImportJson>()
+                .AddActivitiesFrom<Import>()
                 .AddWorkflow<HelloWorldWorkflow>())
             .BuildServiceProvider();
 
@@ -21,6 +22,8 @@ class Program
         var workflowRunner = services.GetRequiredService<IBuildsAndStartsWorkflow>();
 
         // Run the workflow.
-        await workflowRunner.BuildAndStartWorkflowAsync<HelloWorldWorkflow>();
+        await workflowRunner.BuildAndStartWorkflowAsync<HelloWorldWorkflow>(input:
+            new Elsa.Models.WorkflowInput("https://support.oneskyapp.com/hc/en-us/article_attachments/202761627/example_1.json")
+        );
     }
 }
