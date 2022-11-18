@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Elsa.Services;
 using Microsoft.Extensions.DependencyInjection;
+using WorkflowTest.Activities;
 
 namespace WorkflowTest;
 
@@ -12,6 +13,7 @@ class Program
         var services = new ServiceCollection()
             .AddElsa(options => options
                 .AddConsoleActivities()
+                .AddActivitiesFrom<ImportJson>()
                 .AddWorkflow<HelloWorldWorkflow>())
             .BuildServiceProvider();
 
