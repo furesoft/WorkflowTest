@@ -9,7 +9,7 @@ namespace WorkflowTest.Activities;
 
 public class DisplayKeys : Activity
 {
-    public override ValueTask<IActivityExecutionResult> ExecuteAsync(ActivityExecutionContext context)
+    public override async ValueTask<IActivityExecutionResult> ExecuteAsync(ActivityExecutionContext context)
     {
         var obj = (JObject)context.Input;
 
@@ -18,8 +18,6 @@ public class DisplayKeys : Activity
             Console.WriteLine(kv.Key);
         }
 
-        
-
-        return ValueTask.FromResult<IActivityExecutionResult>(Done());
+        return Done();
     }
 }

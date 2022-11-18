@@ -23,7 +23,7 @@ class Program
 
         // Run the workflow.
         await workflowRunner.BuildAndStartWorkflowAsync<HelloWorldWorkflow>(input:
-            new Elsa.Models.WorkflowInput("https://support.oneskyapp.com/hc/en-us/article_attachments/202761627/example_1.json")
+            new Elsa.Models.WorkflowInput("https://support.oneskyapp.com/hc/en-us/article_attachments/202761627/example_1.json2")
         );
     }
 }
